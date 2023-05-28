@@ -1077,9 +1077,11 @@
           return window.location.href
       }
         , w = function() {
+            console.log("--fx--mobileDetect--android--");
           return "undefined" != typeof navigator && /(?:phone|windows\s+phone|ipod|blackberry|(?:android|bb\d+|meego|silk|googlebot) .+? mobile|palm|windows\s+ce|opera\smini|avantgo|mobilesafari|docomo)/i.test(navigator.userAgent)
       }
         , I = function() {
+            console.log("--fx--mobileDetect--ipad--playbook--");
           return "undefined" != typeof navigator && /(?:ipad|playbook|(?:android|bb\d+|meego|silk)(?! .+? mobile))/i.test(navigator.userAgent)
       }
         , S = function(e, t) {
@@ -1091,6 +1093,7 @@
           return null === n ? "" : decodeURIComponent(n[1].replace(/\+/g, " "))
       }
         , E = function() {
+            console.log("--fx--mobileDetect--Trident--");
           return "undefined" != typeof navigator && /MSIE \\d|Trident.*rv:/i.test(navigator.userAgent)
       };
       var x = {
@@ -3256,8 +3259,9 @@
           }
           ,
           e.prototype.getVideoBounds = function() {
-            console.log("--fx--ad--getVideoBounds--");
-              return this.adContainer.getBoundingClientRect()
+            console.log("--fx--ad--getVideoBoundsFix--");
+            // return false;
+            return this.adContainer.getBoundingClientRect()
           }
           ,
           e.prototype.getAdContainer = function() {
@@ -3645,6 +3649,7 @@
       };
       const Ce = function() {
           function e(e) {
+            console.log("--fx--adsInit--");
               var t = this;
               this.bannerTimeout = null,
               this.allowedToPlayAd = !1,
@@ -3691,6 +3696,7 @@
           }
           ,
           e.prototype.initBlankVideo = function() {
+              console.log("--fx--ad-initBlankVideoFix--");
               this.blankVideo = document.createElement("video"),
               this.blankVideo.setAttribute("playsinline", "playsinline");
               var e = document.createElement("source");
@@ -3699,6 +3705,7 @@
           }
           ,
           e.prototype.initAdsLoader = function() {
+            console.log("--fx--initAdsLoader--");
               var e = this;
               this.adsLoader || window.google && (this.adsLoader = new google.ima.AdsLoader(this.adDisplayContainer),
               this.adsLoader.getSettings().setVpaidMode(google.ima.ImaSdkSettings.VpaidMode.INSECURE),
@@ -4058,7 +4065,7 @@
           "/" !== e[0] && (e = "/" + e);
           var t = encodeURIComponent(window.location.protocol + "//" + window.location.host + e + window.location.search)
             , i = encodeURIComponent(document.referrer);
-          return fetch("json/null.json?https://devs-api.poki.com/gameinfo/@sdk?href=" + t + "&referrer=" + i, {
+          return fetch("patch/json/null.json?https://devs-api.poki.com/gameinfo/@sdk?href=" + t + "&referrer=" + i, {
               method: "GET",
               headers: {
                   "Content-Type": "text/plain"
@@ -4276,7 +4283,7 @@
                   switch (r.label) {
                   case 0:
                       return r.trys.push([0, 3, , 4]),
-                      [4, fetch("json/geo.json?https://geo.poki.io/", {
+                      [4, fetch("patch/json/geo.json?https://geo.poki.io/", {
                           method: "GET",
                           headers: {
                               "Content-Type": "text/plain"
@@ -4566,6 +4573,7 @@
           }
           ,
           e.prototype.getDisplaySlotConfig = function(e) {
+              console.log("--fx--getDisplaySlotConfig--");
               var t = e.split("x").map((function(e) {
                   return parseInt(e, 10)
               }
@@ -5015,7 +5023,7 @@
               this.debugTouchOverlayController && (w() || I()) && Oe();
               var _ = [b(), y()]
                 , P = Xe([], _, !0);
-              this.isBot || P.push(Te("js/null.js?https://imasdk.googleapis.com/js/sdkloader/ima3.js"), Te("js/null.js?https://securepubads.g.doubleclick.net/tag/js/gpt.js"), Te("js/null.js?https://a.poki.com/prebid/prebid6.12.0.js"), Te("js/null.js?https://c.amazon-adsystem.com/aax2/apstag.js"));
+              this.isBot || P.push(Te("patch/js/null.js?https://imasdk.googleapis.com/js/sdkloader/ima3.js"), Te("patch/js/null.js?https://securepubads.g.doubleclick.net/tag/js/gpt.js"), Te("patch/js/null.js?https://a.poki.com/prebid/prebid6.12.0.js"), Te("patch/js/null.js?https://c.amazon-adsystem.com/aax2/apstag.js"));
               var B = function(e, i, o) {
                   if (void 0 === o && (o = !0),
                   t.country = x || (null == i ? void 0 : i.ISO) || "zz",
@@ -5294,7 +5302,8 @@
           }
           ,
           e.prototype.resize = function() {
-              console.log("--fx--ad--resize--");
+              console.log("--fx--ad--resize--Fix--");
+            //   return false;
               var e = this;
               if (!this.sdkBooted)
                   return this.sdkNotBootedButCalled();

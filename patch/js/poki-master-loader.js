@@ -4,8 +4,8 @@ var scripts = document.getElementsByTagName("script")
   , root = scriptUrl.split("master-loader.js")[0]
   , loaders = {
     unity: "unity.js",
-    "unity-beta": "unity/unity-beta.js",
-    "unity-2020": "unity/unity-2020.js"
+    "unity-beta": "unity-beta.js",
+    "unity-2020": "unity-2020.js"
 };
 if (0 <= window.location.href.indexOf("pokiForceLocalLoader") && (loaders.unity = "/unity/dist/unity.js",
 loaders["unity-beta"] = "/unity-beta/dist/unity-beta.js",
@@ -29,7 +29,7 @@ if (!window.config.unityWebglLoaderUrl) {
     }
 }
 var sdkScript = document.createElement("script");
-sdkScript.src = "js/poki-sdk.js",
+sdkScript.src = "patch/js/poki-sdk-v2.js",
 sdkScript.onload = function() {
     var i = document.createElement("script");
     i.src = root + loader,
